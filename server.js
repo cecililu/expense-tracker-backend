@@ -1,14 +1,21 @@
 const express=require("express")
-const getCategoriesRoute=require('./routes/routes')
+
 const app=express()
-const cors=require('cors')
 
-app.use(cors)
-app.use(express.json())
+require('dotenv').config()
 
-app.use(getCategoriesRoute)
+const categoryRoute=require('./routes/routes')
 
 
-app.listen(3000,()=>{
-    console.log("run")
+
+
+// app.use(expressValidator)
+app.use('/api/v1',categoryRoute)
+
+
+
+app.listen(process.env.PORT,()=>{
+    console.log('SERVER RUNNING IN PORT',process.env.PORT)
 })
+
+
