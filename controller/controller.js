@@ -2,7 +2,7 @@ const Category = require("../models/category")
 
 
 
-const createCategoriesHandler=(req,res)=>{
+exports.createCategoryHandler=(req,res)=>{
     const category=new Category(req.body)
     category.save((err,data)=>{
        if (err){
@@ -14,5 +14,7 @@ const createCategoriesHandler=(req,res)=>{
     })
 }
 
-
-module.exports={createCategoriesHandler}
+exports.getCategories=async(req,res)=>{
+   let data= await Category.find({})
+   return res.json(data)
+}
