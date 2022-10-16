@@ -59,24 +59,25 @@ await Transaction.deleteOne(req.body,(err,data)=>{
 
 exports.getLabels=async(req,res)=>{
  
- 
-    model.Transaction.aggregate([
+
+   Transaction.aggregate([
    { 
     $lookup:{
-        from:"Category",
-        localFeild:"type",
-        foreignFeild:"type",
+        from:"categories",
+        localField:"type",
+        foreignField:"type",
         as:"category_info"
     }
-
    },
   {
     $unwind:"$category_info",
 
    }
   ]).then(result=>{
+
+    let data=result.map(v=>Object.assign({},{_id : v._id,name:v.name,type:v.type,amount:v.amount,color:v.category_info.color}))
       res.json(data)
   }).catch(error=>{
-     res.status(400).json("Look up error")
+      res.status(400).json(error)
   })
 }
