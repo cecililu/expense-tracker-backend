@@ -1,6 +1,7 @@
-const {getCategoriesHandler} = require('../controller/controller')
+const {createCategoriesHandler} = require('../controller/controller')
 
 const router= require('express').Router()
 
-router.get('/categories',getCategoriesHandler)
+router.post('/categories/create',createCategoriesHandler)
+
 module.exports=router

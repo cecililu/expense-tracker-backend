@@ -9,8 +9,7 @@ const categoryRoute=require('./routes/routes')
 
 
 
-
-// app.use(expressValidator)
+app.use(express.json())
 app.use('/api/v1',categoryRoute)
 
 
