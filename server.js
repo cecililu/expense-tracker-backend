@@ -7,8 +7,6 @@ require('dotenv').config()
 
 const categoryRoute=require('./routes/routes')
 
-
-
 app.use(express.json())
 app.use('/api/v1',categoryRoute)
 
