@@ -57,3 +57,26 @@ await Transaction.deleteOne(req.body,(err,data)=>{
 
 }
 
+exports.getLabels=async(req,res)=>{
+ 
+ 
+    model.Transaction.aggregate([
+   { 
+    $lookup:{
+        from:"Category",
+        localFeild:"type",
+        foreignFeild:"type",
+        as:"category_info"
+    }
+
+   },
+  {
+    $unwind:"$category_info",
+
+   }
+  ]).then(result=>{
+      res.json(data)
+  }).catch(error=>{
+     res.status(400).json("Look up error")
+  })
+}
