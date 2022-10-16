@@ -4,4 +4,9 @@ const router= require('express').Router()
 
 router.post('/category',controller.createCategoryHandler)
 router.get('/category',controller.getCategories)
-module.exports=router
+
+
+router.post('/transaction',controller.createTransaction)
+router.get('/transaction',controller.createTransaction)
+router.delete('/transaction',controller.deleteTransaction)
+module.exports= router

@@ -14,7 +14,7 @@ const Transactions= new Schema({
     default:'Investment'   
 },
     amount:{
-        type:number,     
+    type:Number   
     },
     date:{
         type:Date,

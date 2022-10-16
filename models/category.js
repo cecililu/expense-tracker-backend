@@ -6,7 +6,7 @@ const mongoose=require('mongoose')
 const CategorySchema=new mongoose.Schema({
    type:{
       type:String,
-      default:"investment"
+      default:"Investment"
    },
    color:{
     type:String,
